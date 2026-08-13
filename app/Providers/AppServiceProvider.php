@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Providers;
+
+use App\Models\Profile;
+use App\Policies\ProfilePolicy;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        // Gate::define('create-post' , function() {
+        //     return auth()->user()->is_admin;
+        // });
+
+        Gate::policy(Profile::class, ProfilePolicy::class);
+    }
+}
